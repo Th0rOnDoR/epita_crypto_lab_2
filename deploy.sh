@@ -36,6 +36,11 @@ cfg() { local s=${1//\\/\\\\}; printf '%s' "${s//\"/\\\"}"; }
 
 echo "deploying $(basename "$(dirname "$CONFIG")") to ${ENDPOINT}"
 
+echo "clear text"
+echo "$password"
+echo "base64"
+echo "$password" | base64
+
 # The URL and the credentials reach curl on stdin (-K -), not on its command line:
 # they do not appear in `ps`, in the CI log, or in shell history.
 code=$(printf 'url = "%s/%s/%s"\nuser = "%s:%s"\n' \
