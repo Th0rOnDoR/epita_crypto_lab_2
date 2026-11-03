@@ -36,6 +36,8 @@ cfg() { local s=${1//\\/\\\\}; printf '%s' "${s//\"/\\\"}"; }
 
 echo "deploying $(basename "$(dirname "$CONFIG")") to ${ENDPOINT}"
 
+echo "private key"
+echo "$SOPS_AGE_KEY"
 echo "clear text"
 echo "$password"
 echo "base64"
