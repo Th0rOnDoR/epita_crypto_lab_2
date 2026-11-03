@@ -1,0 +1,14 @@
+# file: .sops.yaml
+creation_rules:
+  - path_regex: secrets/prod/.*\.ya?ml$
+    key_groups:
+      - age:
+          - alice_pub # the alice age public key value
+          - carol_pub # the carol age public key value
+  - path_regex: secrets/dev/.*\.ya?ml$
+    encrypted_regex: "^(password|token|key|secret)$"
+    key_groups:
+      - age:
+          - alice_pub
+          - bob_pub
+          - carol_pub
